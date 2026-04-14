@@ -19,7 +19,7 @@ p{font-size:14px;color:#444}
 .progress-bar{height:100%;width:10%;background:#FFC300;transition:.4s}
 .option{border:2px solid #0A3D91;border-radius:12px;padding:14px;margin-top:10px;cursor:pointer;transition:.3s}
 .option:hover{background:#0A3D91;color:#fff}
-.hidden{display:none}
+.hidden{display:none !important}
 input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:1px solid #ddd}
 .highlight{color:#FFC300;font-weight:600}
 .lottie{width:130px;margin:auto}
@@ -86,7 +86,7 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:1px soli
 <div class="option" onclick="finish()">Ver resultado</div>
 </div>
 
-<div id="result" class="hidden" style="display:none">
+<div id="result" class="hidden">
 <div id="animFinal" class="lottie"></div>
 <h1>📊 Resultado de tu diagnóstico</h1>
 <p>Tienes alta probabilidad de reducir tu crédito y ahorrar dinero aplicando la <span class="highlight">Ley 546/1999</span></p>
@@ -112,11 +112,13 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:1px soli
 
 <script>
 function start(){
+ document.getElementById('result').classList.add('hidden');
  document.getElementById('intro').classList.add('hidden');
  document.getElementById('quiz').classList.remove('hidden');
 }
 
 function next(step){
+ document.getElementById('result').classList.add('hidden');
  document.querySelectorAll('[id^="step"]').forEach(e=>e.classList.add('hidden'));
  document.getElementById('step'+step).classList.remove('hidden');
  document.getElementById('bar').style.width=(step*20)+'%';
