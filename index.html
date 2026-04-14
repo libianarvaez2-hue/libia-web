@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Hipotecario | Libia Narváez</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+<style>
+body{margin:0;font-family:'Poppins',sans-serif;background:#ffffff;color:#0A3D91}
+.container{max-width:520px;margin:auto;padding:20px}
+.card{background:#ffffff;border-radius:20px;padding:25px;box-shadow:0 10px 40px rgba(10,61,145,.15);text-align:center;position:relative;overflow:hidden}
+h1{font-size:22px}
+p{font-size:14px;color:#444}
+.hero-shape{position:absolute;width:200px;height:200px;background:#FFC300;border-radius:50%;top:-80px;right:-80px;opacity:0.3}
+.hero-shape2{position:absolute;width:150px;height:150px;background:#0A3D91;border-radius:50%;bottom:-60px;left:-60px;opacity:0.2}
+.btn-main{background:#0A3D91;color:#fff;padding:15px;border-radius:30px;font-weight:600;display:block;margin-top:20px;text-decoration:none}
+.progress{height:6px;background:#eee;border-radius:10px;margin-bottom:20px;overflow:hidden}
+.progress-bar{height:100%;width:10%;background:#FFC300;transition:.4s}
+.option{border:2px solid #0A3D91;border-radius:12px;padding:14px;margin-top:10px;cursor:pointer;transition:.3s}
+.option:hover{background:#0A3D91;color:#fff}
+.hidden{display:none}
+input{width:100%;padding:12px;margin-top:10px;border-radius:10px;border:1px solid #ddd}
+.highlight{color:#FFC300;font-weight:600}
+.lottie{width:130px;margin:auto}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HERO -->
+<div class="card" id="intro">
+<div class="hero-shape"></div>
+<div class="hero-shape2"></div>
+<div id="animCasa" class="lottie"></div>
+<h1>¿Pagas tu casa pero sientes que la deuda no baja?</h1>
+<p>Descubre cómo optimizar tu crédito con la <span class="highlight">Ley 546/1999</span></p>
+<a class="btn-main" onclick="start()">Iniciar diagnóstico gratuito</a>
+</div>
+
+<!-- QUIZ -->
+<div class="card hidden" id="quiz">
+<div class="progress"><div class="progress-bar" id="bar"></div></div>
+
+<div id="step1">
+<div id="anim1" class="lottie"></div>
+<h1>¿Cuántos años llevas pagando?</h1>
+<div class="option" onclick="next(2)">Menos de 5 años</div>
+<div class="option" onclick="next(2)">5 a 10 años</div>
+<div class="option" onclick="next(2)">Más de 10 años</div>
+</div>
+
+<div id="step2" class="hidden">
+<div id="anim2" class="lottie"></div>
+<h1>¿Sientes que tu deuda no baja?</h1>
+<div class="option" onclick="next(3)">Sí, no baja</div>
+<div class="option" onclick="next(3)">Baja muy lento</div>
+<div class="option" onclick="next(3)">Sí baja normal</div>
+</div>
+
+<div id="step3" class="hidden">
+<div id="animDeuda" class="lottie"></div>
+<h1>¿Sabías esto sobre la Ley 546/1999?</h1>
+<p>Puedes hacer abonos a capital sin sanción y decidir si reduces cuota o plazo</p>
+<div class="option" onclick="next(4)">No sabía</div>
+<div class="option" onclick="next(4)">Quiero saber más</div>
+<div class="option" onclick="next(4)">Sí sabía</div>
+</div>
+
+<div id="step4" class="hidden">
+<div id="animAhorro" class="lottie"></div>
+<h1>Si te muestro que puedes reducir tu crédito hipotecario de 30 a 5 años y dejar de pagar muchos millones, ¿estarías interesado/a?</h1>
+<div class="option" onclick="next(5)">Sí, totalmente</div>
+<div class="option" onclick="next(5)">Quiero ver números</div>
+<div class="option" onclick="next(5)">Depende</div>
+</div>
+
+<div id="step5" class="hidden">
+<div id="animDatos" class="lottie"></div>
+<h1>Datos para tu diagnóstico</h1>
+<input id="nombre" placeholder="Nombre">
+<input id="telefono" placeholder="WhatsApp">
+<input id="correo" placeholder="Correo">
+<input id="ciudad" placeholder="Ciudad">
+<input id="banco" placeholder="Banco">
+<div class="option" onclick="finish()">Ver resultado</div>
+</div>
+
+<div id="result" class="hidden" style="display:none">
+<div id="animFinal" class="lottie"></div>
+<h1>📊 Resultado de tu diagnóstico</h1>
+<p>Tienes alta probabilidad de reducir tu crédito y ahorrar dinero aplicando la <span class="highlight">Ley 546/1999</span></p>
+
+<div style="display:flex;justify-content:center;gap:20px;margin-top:15px">
+  <div id="iconWa" style="width:60px"></div>
+  <div id="iconIg" style="width:60px"></div>
+</div>
+
+<a id="waBtn" class="btn-main" target="_blank">Hablar por WhatsApp</a>
+<a href="https://instagram.com/libianarvaez_vivienda" target="_blank" class="btn-main" style="background:#E1306C">Ver Instagram</a>
+
+<p style="font-size:13px;color:#777">Recibe tu cálculo personalizado</p>
+</div>
+<h1>📊 Resultado de tu diagnóstico</h1>
+<p>Tienes alta probabilidad de reducir tu crédito y ahorrar dinero aplicando la <span class="highlight">Ley 546/1999</span></p>
+<a id="waBtn" class="btn-main" target="_blank">Hablar por WhatsApp</a>
+<p style="font-size:13px;color:#777">Recibe tu cálculo personalizado</p>
+</div>
+
+</div>
+</div>
+
+<script>
+function start(){
+ document.getElementById('intro').classList.add('hidden');
+ document.getElementById('quiz').classList.remove('hidden');
+}
+
+function next(step){
+ document.querySelectorAll('[id^="step"]').forEach(e=>e.classList.add('hidden'));
+ document.getElementById('step'+step).classList.remove('hidden');
+ document.getElementById('bar').style.width=(step*20)+'%';
+}
+
+function finish(){
+ // ocultar todos los pasos correctamente
+ document.querySelectorAll('[id^="step"]').forEach(e=>e.style.display='none');
+ const nombre=document.getElementById('nombre').value;
+ const telefono=document.getElementById('telefono').value;
+ const ciudad=document.getElementById('ciudad').value;
+
+ const correo=document.getElementById('correo').value;
+ const banco=document.getElementById('banco').value;
+
+ const msg=`Hola, acabo de hacer el diagnóstico.
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Correo: ${correo}
+Ciudad: ${ciudad}
+Banco: ${banco}
+
+Quiero saber cómo reducir mi crédito hipotecario aplicando la Ley 546/1999.`;
+ document.getElementById('waBtn').href=`https://wa.me/573024258722?text=${encodeURIComponent(msg)}`;
+
+ document.getElementById('result').style.display='block';
+}
+
+// Animaciones
+lottie.loadAnimation({container:document.getElementById('animCasa'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_tfb3estd.json'});
+lottie.loadAnimation({container:document.getElementById('anim1'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_qp1q7mct.json'});
+lottie.loadAnimation({container:document.getElementById('anim2'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_9wpyhdzo.json'});
+lottie.loadAnimation({container:document.getElementById('animDeuda'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_yyja2k.json'});
+lottie.loadAnimation({container:document.getElementById('animAhorro'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json'});
+lottie.loadAnimation({container:document.getElementById('animDatos'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_usmfx6bp.json'});
+lottie.loadAnimation({container:document.getElementById('animFinal'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_qp1q7mct.json'});
+
+// Iconos redes
+lottie.loadAnimation({container:document.getElementById('iconWa'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_kkflmtur.json'});
+lottie.loadAnimation({container:document.getElementById('iconIg'),renderer:'svg',loop:true,autoplay:true,path:'https://assets2.lottiefiles.com/packages/lf20_t9gkkhz4.json'});
+</script>
+
+</body>
+</html>
